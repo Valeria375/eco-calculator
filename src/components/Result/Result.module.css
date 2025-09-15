@@ -1,0 +1,78 @@
+.result {
+  background-color: var(--light);
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.result h3 {
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+.carbonValue {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin: 1rem 0;
+}
+
+.progressBar {
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+}
+
+.shareButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.shareBtn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.shareBtn.facebook {
+  background-color: #3b5998;
+  color: white;
+}
+
+.shareBtn.twitter {
+  background-color: #1DA1F2;
+  color: white;
+}
+
+.shareBtn.copy {
+  background-color: var(--accent);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .shareButtons {
+    flex-direction: column;
+  }
+  
+  .carbonValue {
+    font-size: 2rem;
+  }
+}

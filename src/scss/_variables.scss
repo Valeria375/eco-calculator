@@ -1,0 +1,45 @@
+// Colors
+$primary: #4CAF50;
+$primary-dark: #388E3C;
+$primary-light: #C8E6C9;
+$secondary: #2196F3;
+$accent: #FF9800;
+$light: #E8F5E9;
+$light-dark: #f5f9f6;
+$dark: #1B5E20;
+$dark-light: #2E7D32;
+$white: #ffffff;
+$black: #000000;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+// Theme variables
+:root {
+  --primary: #{$primary};
+  --primary-dark: #{$primary-dark};
+  --primary-light: #{$primary-light};
+  --secondary: #{$secondary};
+  --accent: #{$accent};
+  --light: #{$light};
+  --dark: #{$dark};
+  --background: #{$white};
+  --text: #{$gray-900};
+  --card-bg: #{$white};
+  --hover: #{$gray-100};
+  --border: #{$gray-300};
+}
+
+[data-theme="dark"] {
+  --background: #f8f9fa;
+  --text: #{$gray-900};
+  --card-bg: #{$white};
+  --hover: #{$gray-200};
+  --primary-light: #{$primary-light};
+  --light: #{$light-dark};
+  --dark: #{$dark-light};
+  --border: #{$gray-400};
+}

@@ -1,0 +1,112 @@
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 2rem 0;
+}
+
+.authCard {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+}
+
+.authCard h2 {
+  text-align: center;
+  color: var(--dark);
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.authForm {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.formGroup input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.submitBtn {
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: filter 0.3s;
+  font-weight: 600;
+}
+
+.submitBtn:hover {
+  filter: brightness(0.9);
+}
+
+.authSwitch {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.switchBtn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.authBenefits {
+  background-color: var(--light);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.authBenefits h4 {
+  color: var(--dark);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.authBenefits ul {
+  list-style: none;
+  padding: 0;
+}
+
+.authBenefits li {
+  padding: 0.5rem 0;
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .authCard {
+    padding: 2rem;
+    margin: 0 1rem;
+  }
+}

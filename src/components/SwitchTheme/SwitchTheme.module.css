@@ -1,0 +1,136 @@
+.themeSwitch {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownToggle {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: filter 0.3s;
+}
+
+.dropdownToggle:hover {
+  /* Используем filter вместо darken */
+  filter: brightness(0.9);
+}
+
+.themeIconActive {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dropdownMenu {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background-color: var(--background);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  list-style: none;
+  margin: 0 0 0.5rem 0;
+  min-width: 150px;
+  display: none;
+  border: 1px solid var(--hover);
+}
+
+.dropdown:hover .dropdownMenu {
+  display: block;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--text);
+  transition: background-color 0.3s;
+}
+
+.dropdownItem:hover {
+  background-color: var(--hover);
+}
+
+.dropdownItem.active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.themeIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.5rem;
+  opacity: 0.7;
+  fill: currentColor;
+}
+
+.checkIcon {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  fill: currentColor;
+  display: none;
+}
+
+.dropdownItem.active .checkIcon {
+  display: block;
+}
+
+.iconsDefinition {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Темная тема */
+[data-theme="dark"] .dropdownMenu {
+  background-color: var(--card-bg);
+  border: 1px solid #4a5568;
+}
+
+[data-theme="dark"] .dropdownItem {
+  color: var(--text);
+}
+
+[data-theme="dark"] .dropdownItem:hover {
+  background-color: var(--hover);
+}
+
+[data-theme="dark"] .dropdownItem.active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}

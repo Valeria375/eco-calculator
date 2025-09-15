@@ -1,0 +1,13 @@
+.footer {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.earth {
+  font-size: 2rem;
+  margin: 1rem 0;
+  animation: rotate 20s linear infinite;
+}
