@@ -3,121 +3,194 @@ import styles from './TipsPage.module.css';
 
 const TipsPage: React.FC = () => {
   return (
-    <div>
-      <div className="hero">
-        <h2>Советы по уменьшению углеродного следа</h2>
-        <p>Небольшие изменения в повседневной жизни могут значительно снизить ваш углеродный след и помочь сохранить планету для будущих поколений.</p>
+    <div className={styles.tipsPage}>
+      {/* Герой секция */}
+      <div className={styles.hero}>
+        <h1>Стань супергероем планеты! 🌍</h1>
+        <p>Узнай простые лайфхаки, которые помогут спасти Землю от углеродных следов!</p>
+        <div className={styles.heroImage}>
+          <div className={styles.planet}></div>
+          <div className={styles.superhero}></div>
+        </div>
       </div>
-      
-      <div className={styles.tips}>
-        <h3>Практические советы для детей и взрослых:</h3>
-        <ul className={styles.tipsList}>
-          <li>
-            <div className={styles.tipIcon}>
-              <i className="fas fa-bus"></i>
-            </div>
-            <div className={styles.tipContent}>
-              <h4>Экологичный транспорт</h4>
-              <p>Ходите пешком, используйте велосипед или общественный транспорт вместо автомобиля. Если используете авто — делитесь поездками с другими.</p>
-            </div>
-          </li>
-          
-          <li>
-            <div className={styles.tipIcon}>
-              <i className="fas fa-lightbulb"></i>
-            </div>
-            <div className={styles.tipContent}>
-              <h4>Энергосбережение</h4>
-              <p>Выключайте свет и электроприборы, когда они не используются. Используйте энергосберегающие лампы и умные розетки.</p>
-            </div>
-          </li>
-          
-          <li>
-            <div className={styles.tipIcon}>
-              <i className="fas fa-recycle"></i>
-            </div>
-            <div className={styles.tipContent}>
-              <h4>Переработка отходов</h4>
-              <p>Сортируйте и перерабатывайте мусор. Сдавайте пластиковые бутылки, бумагу, стекло и металл в пункты приема.</p>
-            </div>
-          </li>
-          
-          <li>
-            <div className={styles.tipIcon}>
-              <i className="fas fa-shopping-bag"></i>
-            </div>
-            <div className={styles.tipContent}>
-              <h4>Устойчивые покупки</h4>
-              <p>Используйте многоразовые сумки вместо пластиковых пакетов. Покупайте продукты с минимальной упаковкой.</p>
-            </div>
-          </li>
-          
-          <li>
-            <div className={styles.tipIcon}>
-              <i className="fas fa-utensils"></i>
-            </div>
-            <div className={styles.tipContent}>
-              <h4>Растительное питание</h4>
-              <p>Сократите потребление мяса, особенно говядины. Один безмясной день в неделю может значительно снизить ваш углеродный след.</p>
-            </div>
-          </li>
-          
-          <li>
-            <div className={styles.tipIcon}>
-              <i className="fas fa-tint"></i>
-            </div>
-            <div className={styles.tipContent}>
-              <h4>Экономия воды</h4>
-              <p>Экономьте воду: выключайте кран, когда чистите зубы, принимайте короткий душ вместо ванны, используйте водосберегающие насадки.</p>
-            </div>
-          </li>
-          
-          <li>
-            <div className={styles.tipIcon}>
-              <i className="fas fa-seedling"></i>
-            </div>
-            <div className={styles.tipContent}>
-              <h4>Озеленение</h4>
-              <p>Сажайте деревья и растения. Комнатные растения улучшают качество воздуха, а деревья поглощают CO₂.</p>
-            </div>
-          </li>
-          
-          <li>
-            <div className={styles.tipIcon}>
-              <i className="fas fa-leaf"></i>
-            </div>
-            <div className={styles.tipContent}>
-              <h4>Локальные продукты</h4>
-              <p>Покупайте местные сезонные продукты. Это снижает выбросы от транспортировки товаров.</p>
-            </div>
-          </li>
-          
-          <li>
-            <div className={styles.tipIcon}>
-              <i className="fas fa-laptop"></i>
-            </div>
-            <div className={styles.tipContent}>
-              <h4>Энергоэффективные устройства</h4>
-              <p>Не оставляйте гаджеты в режиме standby. Используйте режимы энергосбережения на устройствах.</p>
-            </div>
-          </li>
-          
-          <li>
-            <div className={styles.tipIcon}>
-              <i className="fas fa-wind"></i>
-            </div>
-            <div className={styles.tipContent}>
-              <h4>Естественное охлаждение</h4>
-              <p>Используйте естественную вентиляцию вместо кондиционера. Утеплите дом чтобы减少отопления зимой.</p>
-            </div>
-          </li>
-        </ul>
+
+      {/* Раздел с суперсилами */}
+      <div className={styles.section}>
+        <h2>Твои суперсилы против углеродного следа! 💪</h2>
+        <div className={styles.superPowers}>
+          <div className={styles.powerCard}>
+            <div className={styles.powerIcon}>🚲</div>
+            <h3>Супер-скорость</h3>
+            <p>Велосипед вместо машины = чистый воздух!</p>
+            <span className={styles.powerScore}>+10 эко-очков</span>
+          </div>
+          <div className={styles.powerCard}>
+            <div className={styles.powerIcon}>💡</div>
+            <h3>Луч энергии</h3>
+            <p>Выключи свет - сэкономь энергию!</p>
+            <span className={styles.powerScore}>+5 эко-очков</span>
+          </div>
+          <div className={styles.powerCard}>
+            <div className={styles.powerIcon}>♻️</div>
+            <h3>Сила переработки</h3>
+            <p>Сортируй мусор - дай вещам вторую жизнь!</p>
+            <span className={styles.powerScore}>+15 эко-очков</span>
+          </div>
+        </div>
       </div>
-      
-      <div className="card" style={{marginTop: '2rem'}}>
-        <i className="fas fa-hands"></i>
-        <h3>Присоединяйтесь к экологическим инициативам!</h3>
-        <p>Участвуйте в местных экологических проектах, субботниках и образовательных программах. Рассказывайте друзьям и семье о важности уменьшения углеродного следа. Вместе мы можем сделать планету чище и здоровее!</p>
+
+      {/* Лайфхаки для каждого дня */}
+      <div className={`${styles.section} ${styles.darkSection}`}>
+        <h2>Эко-лайфхаки на каждый день! 🌟</h2>
+        <div className={styles.lifehacksGrid}>
+          <div className={styles.lifehackCard}>
+            <div className={styles.lifehackImage} style={{background: '#FFD700'}}>
+              <div className={styles.lifehackIcon}>🚰</div>
+            </div>
+            <div className={styles.lifehackContent}>
+              <h3>Закрывай воду</h3>
+              <p>Когда чистишь зубы, выключай кран! Экономия воды = защита рек и озер!</p>
+              <div className={styles.ecoBadge}>💧 Экономия воды</div>
+            </div>
+          </div>
+
+          <div className={styles.lifehackCard}>
+            <div className={styles.lifehackImage} style={{background: '#4CAF50'}}>
+              <div className={styles.lifehackIcon}>🛍️</div>
+            </div>
+            <div className={styles.lifehackContent}>
+              <h3>Своя сумка</h3>
+              <p>Бери многоразовую сумку в магазин. Пластиковые пакеты вредят океану!</p>
+              <div className={styles.ecoBadge}>🐢 Защита океана</div>
+            </div>
+          </div>
+
+          <div className={styles.lifehackCard}>
+            <div className={styles.lifehackImage} style={{background: '#2196F3'}}>
+              <div className={styles.lifehackIcon}>📱</div>
+            </div>
+            <div className={styles.lifehackContent}>
+              <h3>Вынимай зарядку</h3>
+              <p>Зарядка в розетке тратит энергию даже когда не заряжает!</p>
+              <div className={styles.ecoBadge}>⚡ Экономия энергии</div>
+            </div>
+          </div>
+
+          <div className={styles.lifehackCard}>
+            <div className={styles.lifehackImage} style={{background: '#FF9800'}}>
+              <div className={styles.lifehackIcon}>🍎</div>
+            </div>
+            <div className={styles.lifehackContent}>
+              <h3>Локальные продукты</h3>
+              <p>Покупай фрукты и овощи которые растут рядом. Меньше перевозок = меньше выхлопов!</p>
+              <div className={styles.ecoBadge}>🚚 Меньше перевозок</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Игровой раздел - квесты */}
+      <div className={styles.section}>
+        <h2>Эко-квесты на неделю! 🏆</h2>
+        <div className={styles.questsContainer}>
+          <div className={styles.quest}>
+            <div className={styles.questIcon}>🌱</div>
+            <div className={styles.questContent}>
+              <h3>Понедельник: День без пластика</h3>
+              <p>Не используй одноразовый пластик целый день!</p>
+              <div className={styles.questProgress}>
+                <div className={styles.progressBar}>
+                  <div className={styles.progressFill} style={{width: '75%'}}></div>
+                </div>
+                <span>75% выполнено</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.quest}>
+            <div className={styles.questIcon}>🚶</div>
+            <div className={styles.questContent}>
+              <h3>Вторник: 10 000 шагов</h3>
+              <p>Пройди пешком вместо поездки на машине!</p>
+              <div className={styles.questProgress}>
+                <div className={styles.progressBar}>
+                  <div className={styles.progressFill} style={{width: '40%'}}></div>
+                </div>
+                <span>40% выполнено</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.quest}>
+            <div className={styles.questIcon}>💡</div>
+            <div className={styles.questContent}>
+              <h3>Среда: Энергосбережение</h3>
+              <p>Выключай все приборы из розеток на ночь!</p>
+              <div className={styles.questProgress}>
+                <div className={styles.progressBar}>
+                  <div className={styles.progressFill} style={{width: '90%'}}></div>
+                </div>
+                <span>90% выполнено</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Интерактивная игра */}
+      <div className={`${styles.section} ${styles.gameSection}`}>
+        <h2>Собери эко-робота! 🤖</h2>
+        <p>Выполняй задания и собирай детали для своего эко-робота!</p>
+        <div className={styles.robotBuilder}>
+          <div className={styles.robot}>
+            <div className={styles.robotPart}>🤖</div>
+            <div className={styles.robotStats}>
+              <div className={styles.stat}>
+                <span>Собран на: 60%</span>
+                <div className={styles.statBar}>
+                  <div className={styles.statFill} style={{width: '60%'}}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.robotParts}>
+            <div className={styles.part}>🔋</div>
+            <div className={styles.part}>⚡</div>
+            <div className={styles.part}>🌿</div>
+            <div className={styles.part}>💧</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Мотивационный раздел */}
+      <div className={`${styles.section} ${styles.motivationSection}`}>
+        <h2>Ты уже делаешь планету лучше! ✨</h2>
+        <div className={styles.motivationCards}>
+          <div className={styles.motivationCard}>
+            <div className={styles.motivationIcon}>🌳</div>
+            <h3>Твои действия имеют значение!</h3>
+            <p>Каждый раз, когда ты выбираешь экологичный вариант, ты помогаешь природе!</p>
+          </div>
+          <div className={styles.motivationCard}>
+            <div className={styles.motivationIcon}>👫</div>
+            <h3>Расскажи друзьям!</h3>
+            <p>Поделись этими лайфхаками с друзьями - вместе мы сможем больше!</p>
+          </div>
+          <div className={styles.motivationCard}>
+            <div className={styles.motivationIcon}>🏆</div>
+            <h3>Стань чемпионом экологии!</h3>
+            <p>Собирай эко-очки и получай звания защитника природы!</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Призыв к действию */}
+      <div className={styles.ctaSection}>
+        <div className={styles.ctaContent}>
+          <h2>Готов начать менять мир? 🚀</h2>
+          <p>Выбери один лайфхак и начни применять его уже сегодня!</p>
+          <button className={styles.ctaButton}>Начать эко-приключение!</button>
+        </div>
       </div>
     </div>
   );
