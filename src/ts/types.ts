@@ -3,15 +3,27 @@ export interface CarbonData {
   flight: number;
   diet: number;
   energy: number;
+  electricity: number;
+  shopping: number;
   steps: number;
   plasticBottles: number;
-  electricity: number;
   waterUsage: number;
 }
 
 export interface CalculationResult {
   carbonFootprint: number;
   comparison: number;
+  breakdown?: {
+    transport: number;
+    flight: number;
+    diet: number;
+    energy: number;
+    electricity: number;
+    shopping: number;
+    steps: number;
+    plasticBottles: number;
+    waterUsage: number;
+  };
 }
 
 export interface ThemeContextType {
@@ -24,4 +36,24 @@ export interface User {
   name: string;
   email: string;
   carbonFootprintHistory: CalculationResult[];
+}
+
+export interface CalculatorProps {
+  onCalculate: (result: CalculationResult) => void;
+}
+
+export interface ResultProps {
+  carbonFootprint: number;
+  comparison: number;
+  breakdown?: {
+    transport: number;
+    flight: number;
+    diet: number;
+    energy: number;
+    electricity: number;
+    shopping: number;
+    steps: number;
+    plasticBottles: number;
+    waterUsage: number;
+  };
 }

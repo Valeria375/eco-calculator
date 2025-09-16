@@ -34,6 +34,37 @@
   transition: width 0.5s ease-in-out;
 }
 
+.breakdown {
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.breakdown h4 {
+  color: var(--dark);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.breakdownGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.breakdownItem, .breakdownItemPositive {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.breakdownItemPositive {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: var(--primary);
+}
+
 .shareButtons {
   display: flex;
   justify-content: center;
@@ -74,5 +105,9 @@
   
   .carbonValue {
     font-size: 2rem;
+  }
+  
+  .breakdownGrid {
+    grid-template-columns: 1fr;
   }
 }

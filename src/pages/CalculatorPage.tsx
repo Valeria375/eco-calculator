@@ -22,7 +22,8 @@ const CalculatorPage: React.FC = () => {
       {result && (
         <Result 
           carbonFootprint={result.carbonFootprint} 
-          comparison={result.comparison} 
+          comparison={result.comparison}
+          breakdown={result.breakdown}
         />
       )}
     </div>

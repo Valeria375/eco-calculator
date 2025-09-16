@@ -4,140 +4,131 @@ import styles from './HomePage.module.css';
 const HomePage: React.FC = () => {
   return (
     <div className={styles.homePage}>
-      {/* Герой секция с большим заголовком и иллюстрацией */}
-      <div className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1>Давай спасать планету вместе!</h1>
-          <p>Узнай, как твои привычки влияют на природу и стань супергероем Земли!</p>
-          <div className={styles.heroImage}>
-            <div className={styles.earth}></div>
-            <div className={styles.superhero}></div>
-          </div>
+      {/* Герой секция с фоном неба */}
+      <header className={styles.mainHeader}>
+        <div className={styles.headerContent}>
+          <h1>Углеродный след: Невидимая угроза нашей планете</h1>
+          <p>Узнайте, как ваши ежедневные привычки влияют на климат Земли</p>
+          <button className={styles.ctaButton}>Начать расчет</button>
         </div>
-      </div>
+        <div className={styles.co2Molecule}>
+          <div className={styles.molecule}></div>
+        </div>
+      </header>
 
-      {/* Что такое углеродный след - просто и понятно */}
-      <div className={styles.section}>
-        <h2>Что такое углеродный след?</h2>
-        <div className={styles.carbonExplanation}>
-          <div className={styles.explanationCard}>
-            <div className={styles.icon}>👣</div>
-            <h3>Это как следы на песке</h3>
-            <p>Только вместо песка - наша планета! Каждый раз, когда мы пользуемся электричеством, едем на машине или покупаем новую игрушку, мы оставляем "след" из углекислого газа.</p>
-          </div>
-          <div className={styles.explanationCard}>
-            <div className={styles.icon}>🌡️</div>
-            <h3>Слишком много следов - планете жарко</h3>
-            <p>Когда следов становится слишком много, Земле становится жарко, как в парнике! Ледники тают, а животные теряют свои дома.</p>
-          </div>
-          <div className={styles.explanationCard}>
-            <div className={styles.icon}>🦸</div>
-            <h3>Ты можешь стать супергероем!</h3>
-            <p>Узнай свой углеродный след и получи суперсилы для защиты планеты! Маленькие шаги могут привести к большим изменениям.</p>
+      {/* Что такое углеродный след */}
+      <section className={`${styles.section} ${styles.carbonDefinition}`}>
+        <div className={styles.sectionContent}>
+          <h2>Что такое углеродный след?</h2>
+          <div className={styles.definitionGrid}>
+            <div className={styles.definitionText}>
+              <p>Углеродный след — это общее количество парниковых газов (в основном углекислого газа CO₂), которые выделяются в атмосферу в результате деятельности человека.</p>
+              <p>Представьте, что каждый раз, когда вы едете на машине, включаете свет или покупаете новую вещь, вы оставляете невидимый "след" из CO₂ в атмосфере.</p>
+              <p>Эти следы накапливаются и создают "одеяло" вокруг Земли, которое задерживает тепло и приводит к изменению климата.</p>
+            </div>
+            <div className={styles.definitionImage}>
+              <img src="/images/footprint.png" alt="Визуализация углеродного следа" />
+              <div className={styles.imageCaption}>Накопление CO₂ в атмосфере</div>
+            </div>
           </div>
         </div>
-      </div>
+        <div className={styles.footprint}></div>
+      </section>
 
-      {/* Откуда берется углеродный след - с картинками */}
-      <div className={`${styles.section} ${styles.darkSection}`}>
-        <h2>Откуда берутся углеродные следы?</h2>
-        <div className={styles.sourcesGrid}>
-          <div className={styles.sourceItem}>
-            <div className={styles.sourceIcon}>🚗</div>
-            <h4>Машинки-дымлянки</h4>
-            <p>Машины выпускают дым, который нагревает планету</p>
-          </div>
-          <div className={styles.sourceItem}>
-            <div className={styles.sourceIcon}>💡</div>
-            <h4>Лампочки-обжорки</h4>
-            <p>Электричество часто делают из угля и газа</p>
-          </div>
-          <div className={styles.sourceItem}>
-            <div className={styles.sourceIcon}>🏭</div>
-            <h4>Заводы-пускатели</h4>
-            <p>Заводы делают игрушки, но тоже оставляют следы</p>
-          </div>
-          <div className={styles.sourceItem}>
-            <div className={styles.sourceIcon}>🍔</div>
-            <h4>Еда-следооставитель</h4>
-            <p>Некоторые продукты оставляют больше следов</p>
+      {/* Основные источники углеродного следа */}
+      <section className={`${styles.section} ${styles.sourcesSection}`}>
+        <div className={styles.sectionContent}>
+          <h2>Откуда берется углеродный след?</h2>
+          <div className={styles.sourcesGrid}>
+            <div className={styles.sourceItem}>
+              <div className={styles.sourceIcon}>🚗</div>
+              <h3>Транспорт</h3>
+              <p>Автомобили, самолеты и другие виды транспорта, работающие на ископаемом топливе</p>
+              <img src="/api/placeholder/300/200" alt="Транспорт как источник CO2" />
+            </div>
+            <div className={styles.sourceItem}>
+              <div className={styles.sourceIcon}>🏭</div>
+              <h3>Производство энергии</h3>
+              <p>Электростанции, работающие на угле и газе, для производства электричества</p>
+              <img src="/api/placeholder/300/200" alt="Производство энергии" />
+            </div>
+            <div className={styles.sourceItem}>
+              <div className={styles.sourceIcon}>🏠</div>
+              <h3>Домашнее хозяйство</h3>
+              <p>Отопление, охлаждение и электричество в наших домах и офисах</p>
+              <img src="/api/placeholder/300/200" alt="Домашнее хозяйство" />
+            </div>
+            <div className={styles.sourceItem}>
+              <div className={styles.sourceIcon}>🛒</div>
+              <h3>Потребление товаров</h3>
+              <p>Производство и транспортировка продуктов, одежды и других товаров</p>
+              <img src="/api/placeholder/300/200" alt="Потребление товаров" />
+            </div>
           </div>
         </div>
-      </div>
+        <div className={styles.footprint}></div>
+      </section>
 
-      {/* Как помочь планете - интерактивные элементы */}
-      <div className={styles.section}>
-        <h2>Стань защитником планеты!</h2>
-        <div className={styles.actionsGrid}>
-          <div className={styles.actionCard}>
-            <div className={styles.actionIcon}>🚲</div>
-            <h4>Катайся на велосипеде</h4>
-            <p>Вместо машины - велосипед или самокат!</p>
-            <button className={styles.smallBtn}>+10 очков</button>
-          </div>
-          <div className={styles.actionCard}>
-            <div className={styles.actionIcon}>💡</div>
-            <h4>Выключай свет</h4>
-            <p>Когда уходишь из комнаты - гаси свет!</p>
-            <button className={styles.smallBtn}>+5 очков</button>
-          </div>
-          <div className={styles.actionCard}>
-            <div className={styles.actionIcon}>♻️</div>
-            <h4>Сортируй мусор</h4>
-            <p>Бумага, пластик и стекло - в разные контейнеры!</p>
-            <button className={styles.smallBtn}>+15 очков</button>
-          </div>
-          <div className={styles.actionCard}>
-            <div className={styles.actionIcon}>🌳</div>
-            <h4>Сажай растения</h4>
-            <p>Растения очищают воздух и дают кислород!</p>
-            <button className={styles.smallBtn}>+20 очков</button>
+      {/* Почему это важно */}
+      <section className={`${styles.section} ${styles.importanceSection}`}>
+        <div className={styles.sectionContent}>
+          <h2>Почему углеродный след — это важно?</h2>
+          <div className={styles.importanceGrid}>
+            <div className={styles.importanceItem}>
+              <img src="/api/placeholder/250/150" alt="Изменение климата" />
+              <h3>Изменение климата</h3>
+              <p>Повышение температуры приводит к экстремальным погодным условиям</p>
+            </div>
+            <div className={styles.importanceItem}>
+              <img src="/api/placeholder/250/150" alt="Таяние ледников" />
+              <h3>Таяние ледников</h3>
+              <p>Повышение уровня моря угрожает прибрежным регионам</p>
+            </div>
+            <div className={styles.importanceItem}>
+              <img src="/api/placeholder/250/150" alt="Потеря биоразнообразия" />
+              <h3>Потеря биоразнообразия</h3>
+              <p>Многие виды животных и растений не могут адаптироваться к изменениям</p>
+            </div>
           </div>
         </div>
-      </div>
+        <div className={styles.footprint}></div>
+      </section>
+
+      {/* Как уменьшить углеродный след */}
+      <section className={`${styles.section} ${styles.solutionsSection}`}>
+        <div className={styles.sectionContent}>
+          <h2>Как уменьшить свой углеродный след?</h2>
+          <div className={styles.solutionsFlex}>
+            <div className={styles.solutionText}>
+              <h3>Простые шаги для каждого</h3>
+              <ul>
+                <li>🚌 Используйте общественный транспорт вместо автомобиля</li>
+                <li>💡 Выключайте свет и электроприборы когда не используете</li>
+                <li>♻️ Сортируйте и перерабатывайте мусор</li>
+                <li>🛒 Покупайте местные продукты и меньше упакованных товаров</li>
+                <li>🌱 Уменьшите потребление мяса, особенно говядины</li>
+                <li>🌳 Сажайте деревья и поддерживайте зеленые зоны</li>
+              </ul>
+            </div>
+            <div className={styles.solutionImage}>
+              <img src="/api/placeholder/400/300" alt="Способы уменьшения углеродного следа" />
+            </div>
+          </div>
+        </div>
+        <div className={styles.footprint}></div>
+      </section>
 
       {/* Призыв к действию */}
-      <div className={`${styles.section} ${styles.ctaSection}`}>
-        <div className={styles.ctaContent}>
-          <h2>Готов стать супергероем?</h2>
-          <p>Узнай свой углеродный след и начни спасать планету прямо сейчас!</p>
+      <section className={`${styles.section} ${styles.ctaSection}`}>
+        <div className={styles.sectionContent}>
+          <h2>Начните меняться сегодня!</h2>
+          <p>Узнайте свой углеродный след и получите персональные рекомендации по его уменьшению</p>
           <div className={styles.ctaButtons}>
-            <button className={styles.primaryBtn}>Рассчитать след</button>
-            <button className={styles.secondaryBtn}>Узнать больше</button>
+            <button className={styles.primaryButton}>Рассчитать мой след</button>
+            <button className={styles.secondaryButton}>Узнать больше</button>
           </div>
         </div>
-        <div className={styles.ctaImage}>
-          <div className={styles.heroAnimals}></div>
-        </div>
-      </div>
-
-      {/* Интерактивная игра */}
-      <div className={styles.section}>
-        <h2>Игра: Собери эко-команду!</h2>
-        <div className={styles.gameContainer}>
-          <div className={styles.ecoCard}>
-            <div className={styles.ecoIcon}>🌞</div>
-            <span>Солнечный воин</span>
-          </div>
-          <div className={styles.ecoCard}>
-            <div className={styles.ecoIcon}>💧</div>
-            <span>Водный защитник</span>
-          </div>
-          <div className={styles.ecoCard}>
-            <div className={styles.ecoIcon}>🌳</div>
-            <span>Лесной хранитель</span>
-          </div>
-          <div className={styles.ecoCard}>
-            <div className={styles.ecoIcon}>♻️</div>
-            <span>Мастер переработки</span>
-          </div>
-          <div className={styles.ecoCard}>
-            <div className={styles.ecoIcon}>🚲</div>
-            <span>Скоростной эколог</span>
-          </div>
-        </div>
-        <p className={styles.gameText}>Выполняй задания и собирай всю команду эко-героев!</p>
-      </div>
+      </section>
     </div>
   );
 };

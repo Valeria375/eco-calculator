@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { CarbonData } from '../../ts/types';
+import { CarbonData, CalculationResult } from '../../ts/types';
 import styles from './Calculator.module.css';
 
 interface CalculatorProps {
-  onCalculate: (result: { carbonFootprint: number; comparison: number }) => void;
+  onCalculate: (result: CalculationResult) => void;
 }
 
 const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
@@ -12,9 +12,10 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
     flight: 0,
     diet: 0,
     energy: 0,
+    electricity: 0,
+    shopping: 0,
     steps: 0,
     plasticBottles: 0,
-    electricity: 0,
     waterUsage: 0
   });
 
@@ -34,18 +35,32 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
                          (formData.energy * 0.9);
     
     // Новые факторы
-    carbonFootprint -= formData.steps * 0.001; // Каждые 1000 шагов уменьшают след
-    carbonFootprint -= formData.plasticBottles * 0.2; // Каждая бутылка уменьшает след
-    carbonFootprint += formData.electricity * 0.5; // Каждый кВт⋅ч увеличивает след
-    carbonFootprint += formData.waterUsage * 0.1; // Каждый м³ воды увеличивает след
+    carbonFootprint += formData.electricity * 0.5;
+    carbonFootprint += formData.shopping * 0.3;
+    carbonFootprint -= formData.steps * 0.001;
+    carbonFootprint -= formData.plasticBottles * 0.2;
+    carbonFootprint += formData.waterUsage * 0.1;
     
     // Минимальное значение 0
     carbonFootprint = Math.max(0, carbonFootprint);
     
-    onCalculate({
+    const result: CalculationResult = {
       carbonFootprint: parseFloat(carbonFootprint.toFixed(1)),
-      comparison: 4.8
-    });
+      comparison: 4.8,
+      breakdown: {
+        transport: formData.transport * 1.2,
+        flight: formData.flight * 0.8,
+        diet: formData.diet * 0.7,
+        energy: formData.energy * 0.9,
+        electricity: formData.electricity * 0.5,
+        shopping: formData.shopping * 0.3,
+        steps: formData.steps * -0.001,
+        plasticBottles: formData.plasticBottles * -0.2,
+        waterUsage: formData.waterUsage * 0.1
+      }
+    };
+    
+    onCalculate(result);
   };
 
   return (
@@ -145,6 +160,18 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
           onChange={handleChange}
           min="0"
           placeholder="Например: 150"
+        />
+      </div>
+      
+      <div className={styles.formGroup}>
+        <label htmlFor="shopping">Покупка новых вещей (шт. в месяц):</label>
+        <input
+          type="number"
+          id="shopping"
+          value={formData.shopping}
+          onChange={handleChange}
+          min="0"
+          placeholder="Одежда, электроника и т.д."
         />
       </div>
       
