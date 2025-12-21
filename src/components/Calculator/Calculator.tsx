@@ -7,6 +7,7 @@ interface CalculatorProps {
 }
 
 const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
+  const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<CarbonData>({
     transport: 0,
     flight: 0,
@@ -19,178 +20,230 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
     waterUsage: 0
   });
 
+  const questions = [
+    {
+      title: "🚗 Транспорт",
+      question: "Сколько километров вы проехали сегодня на машине?",
+      field: "transport",
+      type: "number",
+      placeholder: "0 км",
+      icon: "🚗"
+    },
+    {
+      title: "✈️ Путешествия",
+      question: "Летали ли вы на самолете за последний месяц?",
+      field: "flight",
+      type: "select",
+      options: [
+        { value: 0, label: "Нет" },
+        { value: 1, label: "1 короткий перелет" },
+        { value: 2, label: "2-3 перелета" },
+        { value: 3, label: "Много перелетов" }
+      ],
+      icon: "✈️"
+    },
+    {
+      title: "🍽️ Питание",
+      question: "Какой тип питания преобладал сегодня?",
+      field: "diet",
+      type: "select",
+      options: [
+        { value: 0, label: "Веганское" },
+        { value: 1, label: "Вегетарианское" },
+        { value: 2, label: "Смешанное (преимущественно растительное)" },
+        { value: 3, label: "Мясное" }
+      ],
+      icon: "🍽️"
+    },
+    {
+      title: "💡 Энергия",
+      question: "Используете ли вы возобновляемую энергию?",
+      field: "energy",
+      type: "select",
+      options: [
+        { value: 0, label: "Да, полностью" },
+        { value: 1, label: "Частично" },
+        { value: 2, label: "Нет" },
+        { value: 3, label: "Не знаю" }
+      ],
+      icon: "💡"
+    },
+    {
+      title: "⚡ Электричество",
+      question: "Сколько кВт·ч электроэнергии израсходовали сегодня?",
+      field: "electricity",
+      type: "number",
+      placeholder: "0 кВт·ч",
+      icon: "⚡"
+    },
+    {
+      title: "🛒 Покупки",
+      question: "Сколько новых вещей приобрели сегодня?",
+      field: "shopping",
+      type: "number",
+      placeholder: "0 шт",
+      icon: "🛒"
+    },
+    {
+      title: "🚶 Шаги",
+      question: "Сколько шагов прошли сегодня?",
+      field: "steps",
+      type: "number",
+      placeholder: "0 шагов",
+      icon: "🚶"
+    },
+    {
+      title: "♻️ Переработка",
+      question: "Сколько пластиковых бутылок сдали на переработку?",
+      field: "plasticBottles",
+      type: "number",
+      placeholder: "0 шт",
+      icon: "♻️"
+    },
+    {
+      title: "💧 Вода",
+      question: "Сколько литров воды использовали сегодня?",
+      field: "waterUsage",
+      type: "number",
+      placeholder: "0 л",
+      icon: "💧"
+    }
+  ];
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { id, value } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [id]: parseInt(value) || 0
+      [name]: parseFloat(value) || 0
     }));
   };
 
+  const nextStep = () => {
+    if (currentStep < questions.length - 1) {
+      setCurrentStep(prev => prev + 1);
+    }
+  };
+
+  const prevStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep(prev => prev - 1);
+    }
+  };
+
   const calculateFootprint = () => {
-    // Базовый расчет
-    let carbonFootprint = (formData.transport * 1.2) + 
-                         (formData.flight * 0.8) + 
-                         (formData.diet * 0.7) + 
-                         (formData.energy * 0.9);
-    
-    // Новые факторы
-    carbonFootprint += formData.electricity * 0.5;
-    carbonFootprint += formData.shopping * 0.3;
-    carbonFootprint -= formData.steps * 0.001;
-    carbonFootprint -= formData.plasticBottles * 0.2;
-    carbonFootprint += formData.waterUsage * 0.1;
-    
-    // Минимальное значение 0
-    carbonFootprint = Math.max(0, carbonFootprint);
+    // Расчет углеродного следа
+    const breakdown = {
+      transport: formData.transport * 0.2, // 0.2 кг CO2 на км
+      flight: formData.flight * 10, // 10 кг CO2 за перелет
+      diet: formData.diet * 2, // 2 кг CO2 за тип питания
+      energy: formData.energy * 1.5, // 1.5 кг CO2 за тип энергии
+      electricity: formData.electricity * 0.5, // 0.5 кг CO2 за кВт·ч
+      shopping: formData.shopping * 3, // 3 кг CO2 за вещь
+      steps: formData.steps * -0.0001, // -0.0001 кг CO2 за шаг
+      plasticBottles: formData.plasticBottles * -0.1, // -0.1 кг CO2 за бутылку
+      waterUsage: formData.waterUsage * 0.002 // 0.002 кг CO2 за литр
+    };
+
+    const carbonFootprint = Object.values(breakdown).reduce((sum, value) => sum + value, 0);
     
     const result: CalculationResult = {
-      carbonFootprint: parseFloat(carbonFootprint.toFixed(1)),
+      carbonFootprint: parseFloat(Math.max(0, carbonFootprint).toFixed(2)),
       comparison: 4.8,
-      breakdown: {
-        transport: formData.transport * 1.2,
-        flight: formData.flight * 0.8,
-        diet: formData.diet * 0.7,
-        energy: formData.energy * 0.9,
-        electricity: formData.electricity * 0.5,
-        shopping: formData.shopping * 0.3,
-        steps: formData.steps * -0.001,
-        plasticBottles: formData.plasticBottles * -0.2,
-        waterUsage: formData.waterUsage * 0.1
-      }
+      breakdown
     };
     
     onCalculate(result);
   };
 
+  const currentQuestion = questions[currentStep];
+
   return (
     <div className={styles.calculator}>
-      <h3>Транспорт и путешествия</h3>
-      
-      <div className={styles.formGroup}>
-        <label htmlFor="transport">Как часто вы пользуетесь автомобилем?</label>
-        <select 
-          id="transport" 
-          value={formData.transport} 
-          onChange={handleChange}
-        >
-          <option value="0">Не пользуюсь автомобилем</option>
-          <option value="1">Редко (1-2 раза в неделю)</option>
-          <option value="2">Иногда (3-4 раза в неделю)</option>
-          <option value="3">Часто (каждый день)</option>
-        </select>
+      <div className={styles.progress}>
+        <div 
+          className={styles.progressBar} 
+          style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
+        ></div>
+        <div className={styles.progressText}>
+          Шаг {currentStep + 1} из {questions.length}
+        </div>
       </div>
-      
-      <div className={styles.formGroup}>
-        <label htmlFor="flight">Как часто вы летаете на самолете?</label>
-        <select 
-          id="flight" 
-          value={formData.flight} 
-          onChange={handleChange}
-        >
-          <option value="0">Никогда</option>
-          <option value="1">Редко (1 раз в год)</option>
-          <option value="2">Иногда (2-3 раза в год)</option>
-          <option value="3">Часто (более 4 раз в год)</option>
-        </select>
+
+      <div className={styles.questionCard}>
+        <div className={styles.questionHeader}>
+          <span className={styles.questionIcon}>{currentQuestion.icon}</span>
+          <h3>{currentQuestion.title}</h3>
+        </div>
+        
+        <div className={styles.questionContent}>
+          <p className={styles.questionText}>{currentQuestion.question}</p>
+          
+          {currentQuestion.type === 'number' ? (
+            <div className={styles.inputGroup}>
+              <input
+                type="number"
+                name={currentQuestion.field}
+                value={formData[currentQuestion.field as keyof CarbonData]}
+                onChange={handleChange}
+                placeholder={currentQuestion.placeholder}
+                className={styles.numberInput}
+                min="0"
+              />
+            </div>
+          ) : (
+            <div className={styles.optionsGrid}>
+              {currentQuestion.options?.map((option, index) => (
+                <label key={index} className={styles.optionLabel}>
+                  <input
+                    type="radio"
+                    name={currentQuestion.field}
+                    value={option.value}
+                    checked={formData[currentQuestion.field as keyof CarbonData] === option.value}
+                    onChange={handleChange}
+                    className={styles.radioInput}
+                  />
+                  <span className={styles.optionText}>{option.label}</span>
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className={styles.navigation}>
+          <button 
+            onClick={prevStep} 
+            disabled={currentStep === 0}
+            className={styles.navButton}
+          >
+            ← Назад
+          </button>
+          
+          {currentStep < questions.length - 1 ? (
+            <button onClick={nextStep} className={styles.navButton}>
+              Далее →
+            </button>
+          ) : (
+            <button onClick={calculateFootprint} className={styles.calculateButton}>
+              📊 Рассчитать результат
+            </button>
+          )}
+        </div>
       </div>
-      
-      <h3>Питание и образ жизни</h3>
-      
-      <div className={styles.formGroup}>
-        <label htmlFor="diet">Какой у вас тип питания?</label>
-        <select 
-          id="diet" 
-          value={formData.diet} 
-          onChange={handleChange}
-        >
-          <option value="0">Веганское</option>
-          <option value="1">Вегетарианское</option>
-          <option value="2">Смешанное с преобладанием растительной пищи</option>
-          <option value="3">Смешанное с преобладанием мяса</option>
-        </select>
+
+      <div className={styles.tips}>
+        <h4>💡 Советы для уменьшения следа:</h4>
+        <ul>
+          {currentStep === 0 && <li>Ходите пешком или используйте велосипед для коротких расстояний</li>}
+          {currentStep === 1 && <li>Выбирайте прямые рейсы и эконом-класс для меньшего расхода топлива</li>}
+          {currentStep === 2 && <li>Увеличьте долю растительной пищи в рационе</li>}
+          {currentStep === 3 && <li>Рассмотрите возможность установки солнечных панелей</li>}
+          {currentStep === 4 && <li>Используйте энергосберегающие лампы и приборы</li>}
+          {currentStep === 5 && <li>Покупайте только необходимое и выбирайте качественные вещи</li>}
+          {currentStep === 6 && <li>Старайтесь проходить 8000-10000 шагов в день</li>}
+          {currentStep === 7 && <li>Сортируйте мусор и сдавайте на переработку</li>}
+          {currentStep === 8 && <li>Принимайте короткий душ вместо ванны</li>}
+        </ul>
       </div>
-      
-      <div className={styles.formGroup}>
-        <label htmlFor="steps">Среднее количество шагов в день:</label>
-        <input
-          type="number"
-          id="steps"
-          value={formData.steps}
-          onChange={handleChange}
-          min="0"
-          placeholder="Например: 8000"
-        />
-      </div>
-      
-      <div className={styles.formGroup}>
-        <label htmlFor="plasticBottles">Сколько пластиковых бутылок сдаете на переработку в месяц?</label>
-        <input
-          type="number"
-          id="plasticBottles"
-          value={formData.plasticBottles}
-          onChange={handleChange}
-          min="0"
-          placeholder="Например: 10"
-        />
-      </div>
-      
-      <h3>Энергия и ресурсы</h3>
-      
-      <div className={styles.formGroup}>
-        <label htmlFor="energy">Используете ли вы возобновляемые источники энергии?</label>
-        <select 
-          id="energy" 
-          value={formData.energy} 
-          onChange={handleChange}
-        >
-          <option value="0">Да, полностью</option>
-          <option value="1">Частично</option>
-          <option value="2">Нет</option>
-          <option value="3">Не знаю</option>
-        </select>
-      </div>
-      
-      <div className={styles.formGroup}>
-        <label htmlFor="electricity">Потребление электроэнергии (кВт⋅ч в месяц):</label>
-        <input
-          type="number"
-          id="electricity"
-          value={formData.electricity}
-          onChange={handleChange}
-          min="0"
-          placeholder="Например: 150"
-        />
-      </div>
-      
-      <div className={styles.formGroup}>
-        <label htmlFor="shopping">Покупка новых вещей (шт. в месяц):</label>
-        <input
-          type="number"
-          id="shopping"
-          value={formData.shopping}
-          onChange={handleChange}
-          min="0"
-          placeholder="Одежда, электроника и т.д."
-        />
-      </div>
-      
-      <div className={styles.formGroup}>
-        <label htmlFor="waterUsage">Потребление воды (м³ в месяц):</label>
-        <input
-          type="number"
-          id="waterUsage"
-          value={formData.waterUsage}
-          onChange={handleChange}
-          min="0"
-          step="0.1"
-          placeholder="Например: 4.5"
-        />
-      </div>
-      
-      <button className={styles.calculateBtn} onClick={calculateFootprint}>
-        Рассчитать мой углеродный след
-      </button>
     </div>
   );
 };

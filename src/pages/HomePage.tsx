@@ -75,17 +75,17 @@ const HomePage: React.FC = () => {
           <h2>Почему углеродный след — это важно?</h2>
           <div className={styles.importanceGrid}>
             <div className={styles.importanceItem}>
-              <img src="/api/placeholder/250/150" alt="Изменение климата" />
+              <img src="/images/i.webp" alt="Изменение климата" />
               <h3>Изменение климата</h3>
               <p>Повышение температуры приводит к экстремальным погодным условиям</p>
             </div>
             <div className={styles.importanceItem}>
-              <img src="/api/placeholder/250/150" alt="Таяние ледников" />
+              <img src="/images/2ca3633e85829de4614a97117a1a1047.jpg" alt="Таяние ледников" />
               <h3>Таяние ледников</h3>
               <p>Повышение уровня моря угрожает прибрежным регионам</p>
             </div>
             <div className={styles.importanceItem}>
-              <img src="/api/placeholder/250/150" alt="Потеря биоразнообразия" />
+              <img src="/images/i.jpg" alt="Потеря биоразнообразия" />
               <h3>Потеря биоразнообразия</h3>
               <p>Многие виды животных и растений не могут адаптироваться к изменениям</p>
             </div>
@@ -111,7 +111,7 @@ const HomePage: React.FC = () => {
               </ul>
             </div>
             <div className={styles.solutionImage}>
-              <img src="/api/placeholder/400/300" alt="Способы уменьшения углеродного следа" />
+              <img src="/images/ip.webp" alt="Способы уменьшения углеродного следа" />
             </div>
           </div>
         </div>

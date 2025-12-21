@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
             <a href="#" className={styles.socialLink}>
               <i className="fab fa-vk"></i>
             </a>
-            <a href="#" className={styles.socialLink}>
+            <a href="https://t.me/Fyrai24" className={styles.socialLink}>
               <i className="fab fa-telegram"></i>
             </a>
             <a href="#" className={styles.socialLink}>
