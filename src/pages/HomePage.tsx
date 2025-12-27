@@ -1,20 +1,23 @@
 import React from 'react';
-import styles from './HomePage.module.css';
 import { useNavigate } from 'react-router-dom';
+import styles from './HomePage.module.css';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleCalculateClick = () => {
     navigate('/calculator');
-  // Плавный скролл к началу страницы после навигации
-  setTimeout(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, 100);
+    // Дополнительная страховка - прокрутка наверх через небольшой таймаут
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 10);
   };
 
   const handleLearnMoreClick = () => {
     navigate('/tips');
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 10);
   };
   return (
     <div className={styles.homePage}>
