@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.73ab1699.css",
-    "main.js": "/static/js/main.e6e06d1a.js",
-    "index.html": "/index.html",
-    "main.73ab1699.css.map": "/static/css/main.73ab1699.css.map",
-    "main.e6e06d1a.js.map": "/static/js/main.e6e06d1a.js.map"
+    "main.css": "/eco-calculator/static/css/main.a32ea6e4.css",
+    "main.js": "/eco-calculator/static/js/main.e0c6b08e.js",
+    "index.html": "/eco-calculator/index.html",
+    "main.a32ea6e4.css.map": "/eco-calculator/static/css/main.a32ea6e4.css.map",
+    "main.e0c6b08e.js.map": "/eco-calculator/static/js/main.e0c6b08e.js.map"
   },
   "entrypoints": [
-    "static/css/main.73ab1699.css",
-    "static/js/main.e6e06d1a.js"
+    "static/css/main.a32ea6e4.css",
+    "static/js/main.e0c6b08e.js"
   ]
 }
