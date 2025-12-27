@@ -1,7 +1,17 @@
 import React from 'react';
 import styles from './HomePage.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleCalculateClick = () => {
+    navigate('/calculator');
+  };
+
+  const handleLearnMoreClick = () => {
+    navigate('/tips');
+  };
   return (
     <div className={styles.homePage}>
       {/* Герой секция с фоном неба */}
@@ -9,7 +19,7 @@ const HomePage: React.FC = () => {
         <div className={styles.headerContent}>
           <h1>Углеродный след: Невидимая угроза нашей планете</h1>
           <p>Узнайте, как ваши ежедневные привычки влияют на климат Земли</p>
-          <button className={styles.ctaButton}>Начать расчет</button>
+          <button className={styles.ctaButton} onClick={handleCalculateClick}>Начать расчет</button>
         </div>
         <div className={styles.co2Molecule}>
           <div className={styles.molecule}></div>
@@ -124,8 +134,8 @@ const HomePage: React.FC = () => {
           <h2>Начните меняться сегодня!</h2>
           <p>Узнайте свой углеродный след и получите персональные рекомендации по его уменьшению</p>
           <div className={styles.ctaButtons}>
-            <button className={styles.primaryButton}>Рассчитать мой след</button>
-            <button className={styles.secondaryButton}>Узнать больше</button>
+            <button className={styles.primaryButton} onClick={handleCalculateClick}>Рассчитать мой след</button>
+            <button className={styles.secondaryButton}  onClick={handleLearnMoreClick}>Узнать больше</button>
           </div>
         </div>
       </section>

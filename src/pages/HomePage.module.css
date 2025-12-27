@@ -40,7 +40,7 @@
 .headerContent p {
   font-size: 1.3rem;
   margin-bottom: 2rem;
-  max-width: 600px;
+  /* max-width: 600px; */
   position: relative;
   z-index: 2;
 }
@@ -426,4 +426,23 @@
   .co2Molecule {
     display: none;
   }
+}
+.ctaButton, .primaryButton, .secondaryButton {
+  transition: all 0.3s ease;
+}
+
+.ctaButton:hover, .primaryButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.secondaryButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Анимация нажатия */
+.ctaButton:active, .primaryButton:active, .secondaryButton:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
