@@ -5,7 +5,28 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
 }
+.hero{
+    padding: 3rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+}
+.hero h2 {
+  text-align: center;
+  color: #1B5E20;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
 
+.hero h2::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: #4CAF50;
+  margin: 1rem auto;
+  border-radius: 2px;
+}
 .formGroup {
   margin-bottom: 1.5rem;
 }

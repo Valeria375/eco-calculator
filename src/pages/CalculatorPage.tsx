@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
 import Calculator from '../components/Calculator/Calculator';
+import styles from './CalculatorPage.module.scss';
 import Result from '../components/Result/Result';
 import { CalculationResult } from '../ts/types';
 
 const CalculatorPage: React.FC = () => {
   const [result, setResult] = useState<CalculationResult | null>(null);
   const [showCalculator, setShowCalculator] = useState(true);
+
   const handleCalculate = (calculationResult: CalculationResult) => {
     setResult(calculationResult);
     setShowCalculator(false);
   };
-   const handleNewCalculation = () => {
+
+  const handleNewCalculation = () => {
     setResult(null);
     setShowCalculator(true);
   };
 
   return (
     <div>
-      <div className="hero">
+      <div className={styles.hero}>
         <h2>Калькулятор углеродного следа</h2>
         <p>Узнайте, какой углеродный след оставляете вы и ваша семья, и получите персонализированные советы по его уменьшению.</p>
       </div>
       
-     {showCalculator ? (
+      {showCalculator ? (
         <Calculator onCalculate={handleCalculate} />
       ) : (
         <div>

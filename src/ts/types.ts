@@ -56,4 +56,5 @@ export interface ResultProps {
     plasticBottles: number;
     waterUsage: number;
   };
+  onNewCalculation?: () => void; // Добавляем опциональный пропс
 }

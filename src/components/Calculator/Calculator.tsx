@@ -22,7 +22,7 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
 
   const questions = [
     {
-      title: "🚗 Транспорт",
+      title: "Транспорт",
       question: "Сколько километров вы проехали сегодня на машине?",
       field: "transport",
       type: "number",
@@ -30,7 +30,7 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
       icon: "🚗"
     },
     {
-      title: "✈️ Путешествия",
+      title: "Путешествия",
       question: "Летали ли вы на самолете за последний месяц?",
       field: "flight",
       type: "select",
@@ -43,7 +43,7 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
       icon: "✈️"
     },
     {
-      title: "🍽️ Питание",
+      title: "Питание",
       question: "Какой тип питания преобладал сегодня?",
       field: "diet",
       type: "select",
@@ -56,7 +56,7 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
       icon: "🍽️"
     },
     {
-      title: "💡 Энергия",
+      title: "Энергия",
       question: "Используете ли вы возобновляемую энергию?",
       field: "energy",
       type: "select",
@@ -69,7 +69,7 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
       icon: "💡"
     },
     {
-      title: "⚡ Электричество",
+      title: "Электричество",
       question: "Сколько кВт·ч электроэнергии израсходовали сегодня?",
       field: "electricity",
       type: "number",
@@ -77,7 +77,7 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
       icon: "⚡"
     },
     {
-      title: "🛒 Покупки",
+      title: "Покупки",
       question: "Сколько новых вещей приобрели сегодня?",
       field: "shopping",
       type: "number",
@@ -85,7 +85,7 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
       icon: "🛒"
     },
     {
-      title: "🚶 Шаги",
+      title: "Шаги",
       question: "Сколько шагов прошли сегодня?",
       field: "steps",
       type: "number",
@@ -93,7 +93,7 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
       icon: "🚶"
     },
     {
-      title: "♻️ Переработка",
+      title: "Переработка",
       question: "Сколько пластиковых бутылок сдали на переработку?",
       field: "plasticBottles",
       type: "number",
@@ -101,7 +101,7 @@ const Calculator: React.FC<CalculatorProps> = ({ onCalculate }) => {
       icon: "♻️"
     },
     {
-      title: "💧 Вода",
+      title: "Вода",
       question: "Сколько литров воды использовали сегодня?",
       field: "waterUsage",
       type: "number",

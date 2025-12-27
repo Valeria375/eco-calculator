@@ -2,7 +2,7 @@ import React from 'react';
 import { ResultProps } from '../../ts/types';
 import styles from './Result.module.css';
 
-const Result: React.FC<ResultProps> = ({ carbonFootprint, comparison, breakdown }) => {
+const Result: React.FC<ResultProps> = ({ carbonFootprint, comparison, breakdown, onNewCalculation }) => {
   if (!breakdown) return null;
 
   // Подготовка данных для диаграммы
@@ -124,6 +124,14 @@ const Result: React.FC<ResultProps> = ({ carbonFootprint, comparison, breakdown 
       <div className={styles.actions}>
         <button className={styles.saveButton}>💾 Сохранить результат</button>
         <button className={styles.shareButton}>📤 Поделиться</button>
+        {onNewCalculation && (
+          <button 
+            className={styles.newCalculationButton}
+            onClick={onNewCalculation}
+          >
+            🔄 Новый расчет
+          </button>
+        )}
       </div>
 
       <div className={styles.historyPrompt}>

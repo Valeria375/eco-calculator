@@ -7,6 +7,10 @@ const HomePage: React.FC = () => {
 
   const handleCalculateClick = () => {
     navigate('/calculator');
+  // Плавный скролл к началу страницы после навигации
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 100);
   };
 
   const handleLearnMoreClick = () => {
